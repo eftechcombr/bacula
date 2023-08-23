@@ -46,30 +46,30 @@ services:
       - ./etc:/opt/bacula/etc:ro
     ports:
       - 9102:9102
-#
-#   baculum-api:
-#     image: eftechcombr/baculum:11.0.6-api
-#     restart: unless-stopped
-#     depends_on: 
-#       - db
-#       - bacula-dir
-#     volumes:
-#       - ./etc/bconsole.conf:/opt/bacula/etc/bconsole.conf:ro
-#       - ./etc/baculum:/etc/baculum:rw
-#     ports:
-#       - 9096:9096
 
-# #
-#   baculum-web:
-#     image: eftechcombr/baculum:11.0.6-web
-#     restart: unless-stopped
-#     depends_on: 
-#       - baculum-api
-#     volumes:
-#       - ./etc/bconsole.conf:/opt/bacula/etc/bconsole.conf:ro
-#       - ./etc/baculum:/etc/baculum:rw
-#     ports:
-#       - 9095:9095
+  baculum-api:
+    image: eftechcombr/baculum:11.0.6-api
+    restart: unless-stopped
+    depends_on: 
+      - db
+      - bacula-dir
+    volumes:
+      - ./etc/bconsole.conf:/opt/bacula/etc/bconsole.conf:ro
+      - ./etc/baculum:/etc/baculum:rw
+    ports:
+      - 9096:9096
+
+#
+  baculum-web:
+    image: eftechcombr/baculum:11.0.6-web
+    restart: unless-stopped
+    depends_on: 
+      - baculum-api
+    volumes:
+      - ./etc/bconsole.conf:/opt/bacula/etc/bconsole.conf:ro
+      - ./etc/baculum:/etc/baculum:rw
+    ports:
+      - 9095:9095
 
 # 
 #volumes: 

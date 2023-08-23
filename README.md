@@ -8,8 +8,8 @@ Deploy the bacula community edition on Docker Containers.
 - [x] Bacula Director                   eftechcombr/bacula:13.0.3-director
 - [x] Bacula Storage Daemon             eftechcombr/bacula:13.0.3-storage
 - [x] Bacula File Daemon                eftechcombr/bacula:13.0.3-client
-- [x] Bacula File Daemon S3             eftechcombr/bacula:13.0.3-client-s3fs (NEW)
-- [x] Bacula File Daemon Git            eftechcombr/bacula:13.0.3-client-git (NEW)
+- [ ] Bacula File Daemon S3             eftechcombr/bacula:13.0.3-client-s3fs (BETA)
+- [ ] Bacula File Daemon Git            eftechcombr/bacula:13.0.3-client-git (BETA)
 - [x] Baculum Web Gui                   eftechcombr/baculum:11.0.6-web
 - [x] Baculum API                       eftechcombr/baculum:11.0.6-api
 - [x] Postfix SMTP Relay                eftechcombr/postfix:latest
@@ -44,7 +44,7 @@ Deploy the bacula community edition on Docker Containers.
     
 ## Video
 
-[![asciicast](https://asciinema.org/a/279317.svg)](https://asciinema.org/a/279317)
+[![asciicast](https://asciinema.org/a/A4skWxuqhgqtIscjkCTl2snc0.svg)](https://asciinema.org/a/A4skWxuqhgqtIscjkCTl2snc0)
 
 
 ## Docker Compose
