@@ -1,4 +1,4 @@
-name: Build baculum containers
+name: Build Baculum 
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
@@ -9,11 +9,11 @@ on:
   # schedule:
   #   - cron: '26 6 * * *'
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
     # Publish semver tags as releases.
     # tags: [ 'v*.*.*' ]
   #pull_request:
-  #  branches: [ "master" ]
+  #  branches: [ "main" ]
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -106,7 +106,7 @@ jobs:
         # against the sigstore community Fulcio instance.
         run: echo "${{ steps.meta.outputs.tags }}" | xargs -I {} cosign sign {}@${{ steps.build-and-push.outputs.digest }}
 
-  build-catalog:
+  build-web:
 
     needs: build-api
 
