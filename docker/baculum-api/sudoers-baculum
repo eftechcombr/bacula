@@ -1,0 +1,16 @@
+Defaults:apache "'!'"requiretty
+www-data ALL=NOPASSWD: /usr/sbin/bconsole
+www-data ALL=NOPASSWD: /usr/sbin/bdirjson
+www-data ALL=NOPASSWD: /usr/sbin/bsdjson
+www-data ALL=NOPASSWD: /usr/sbin/bfdjson
+www-data ALL=NOPASSWD: /usr/sbin/bbconsjson
+www-data ALL=(root) NOPASSWD: /usr/bin/systemctl start bacula-dir
+www-data ALL=(root) NOPASSWD: /usr/bin/systemctl stop bacula-dir
+www-data ALL=(root) NOPASSWD: /usr/bin/systemctl restart bacula-dir
+www-data ALL=(root) NOPASSWD: /usr/bin/systemctl start bacula-sd
+www-data ALL=(root) NOPASSWD: /usr/bin/systemctl stop bacula-sd
+www-data ALL=(root) NOPASSWD: /usr/bin/systemctl restart bacula-sd
+www-data ALL=(root) NOPASSWD: /usr/bin/systemctl start bacula-fd
+www-data ALL=(root) NOPASSWD: /usr/bin/systemctl stop bacula-fd
+www-data ALL=(root) NOPASSWD: /usr/bin/systemctl restart bacula-fd
+www-data ALL=(root) NOPASSWD: /opt/bacula/bin/mtx-changer

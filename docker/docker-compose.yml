@@ -1,0 +1,101 @@
+version: '3.1'
+#
+services:
+
+  db:
+    image: eftechcombr/bacula:13.0.3-catalog
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: bacula
+      POSTGRES_USER: bacula
+      POSTGRES_DB: bacula
+    # volumes:
+    #   - pgdata:/var/lib/postgresql/data:rw
+    ports:
+      - 5432:5432
+#
+  bacula-dir:
+    image: eftechcombr/bacula:13.0.3-director
+    restart: unless-stopped
+    volumes:
+      - ./etc:/opt/bacula/etc:ro
+    depends_on: 
+      - db      
+    ports:
+      - 9101:9101
+#
+  bacula-sd:
+    image: eftechcombr/bacula:13.0.3-storage
+    restart: unless-stopped
+    depends_on:
+      - bacula-dir
+      - db
+    volumes:
+      - ./etc:/opt/bacula/etc:ro
+    ports:
+      - 9103:9103
+#
+  bacula-fd:
+    image: eftechcombr/bacula:13.0.3-client
+    restart: unless-stopped
+    depends_on:
+      - bacula-sd
+      - bacula-dir
+      - db
+    volumes:
+      - ./etc:/opt/bacula/etc:ro
+    ports:
+      - 9102:9102
+#
+#   baculum-api:
+#     image: eftechcombr/baculum:11.0.6-api
+#     restart: unless-stopped
+#     depends_on: 
+#       - db
+#       - bacula-dir
+#     volumes:
+#       - ./etc/bconsole.conf:/opt/bacula/etc/bconsole.conf:ro
+#       - ./etc/baculum:/etc/baculum:rw
+#     ports:
+#       - 9096:9096
+
+# #
+#   baculum-web:
+#     image: eftechcombr/baculum:11.0.6-web
+#     restart: unless-stopped
+#     depends_on: 
+#       - baculum-api
+#     volumes:
+#       - ./etc/bconsole.conf:/opt/bacula/etc/bconsole.conf:ro
+#       - ./etc/baculum:/etc/baculum:rw
+#     ports:
+#       - 9095:9095
+
+# 
+#volumes: 
+#  pgdata:
+#
+#  gmail:
+#    image: eftechcombr/postfix:gmail
+#    restart: unless-stopped
+#    depends_on:
+#      - bacula-dir
+#    # ports:
+#    #  - 30025:25
+#    environment:
+#      GMAIL_USER: xxxxxxxx
+#      GMAIL_PASS: xxxxxxxx
+#
+#  smtp2tg:
+#    image: b3vis/docker-smtp2tg
+#    restart: unless-stopped
+#    volumes:
+#      - ./etc/smtp2tg.toml:/config/smtp2tg.toml:ro
+#    #    ports:
+#    #  - "31025:25"
+#    depends_on:
+#      - bacula-dir
+#
+# 
+#volumes: 
+#  pgdata:
