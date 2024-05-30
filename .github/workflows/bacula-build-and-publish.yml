@@ -21,7 +21,7 @@ env:
   REGISTRY: "docker.io"
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
-  VERSION: "13.0.3"
+  VERSION: "15.0.2"
 
 
 

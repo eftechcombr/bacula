@@ -1,4 +1,4 @@
-FROM eftechcombr/bacula:13.0.3-base
+FROM eftechcombr/bacula:15.0.2-director
 
 RUN curl https://www.bacula.org/downloads/baculum/baculum.pub | apt-key add -
 
@@ -9,7 +9,7 @@ RUN apt update && \
     php-bcmath \
 	php*-mbstring \
 	php-fpm \
-	libapache2-mod-php7.4 \
+	libapache2-mod-php \
 	baculum-api \
 	baculum-api-apache2 \
 	baculum-common \
@@ -24,7 +24,7 @@ RUN usermod -aG bacula www-data && \
   chown -R www-data:bacula /opt/bacula/working /opt/bacula/etc && \
   chmod -R g+rwx /opt/bacula/working /opt/bacula/etc && \
   a2enmod rewrite && \
-  a2enmod php7.4 && \
+  a2enmod php8.2 && \
   a2ensite baculum-web
 
 COPY timezone.ini /etc/php.d/timezone.ini

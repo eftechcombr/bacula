@@ -1,4 +1,4 @@
-FROM eftechcombr/bacula:13.0.3-base
+FROM eftechcombr/bacula:15.0.2-director
 
 RUN curl https://www.bacula.org/downloads/baculum/baculum.pub | apt-key add -
 
@@ -36,3 +36,4 @@ EXPOSE 9096/tcp
 RUN mkdir -p /run/php
 
 CMD ["/usr/bin/supervisord"]
+

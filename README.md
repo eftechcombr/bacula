@@ -1,15 +1,13 @@
-# Bacula 13.0.3 Container
+# Bacula 15.0.2 Container
 
 Deploy the bacula community edition on Docker Containers. 
 
 ## Images
 
-- [x] Bacula Catalog                    eftechcombr/bacula:13.0.3-catalog
-- [x] Bacula Director                   eftechcombr/bacula:13.0.3-director
-- [x] Bacula Storage Daemon             eftechcombr/bacula:13.0.3-storage
-- [x] Bacula File Daemon                eftechcombr/bacula:13.0.3-client
-- [ ] Bacula File Daemon S3             eftechcombr/bacula:13.0.3-client-s3fs (BETA)
-- [ ] Bacula File Daemon Git            eftechcombr/bacula:13.0.3-client-git (BETA)
+- [x] Bacula Catalog                    eftechcombr/bacula:15.0.2-catalog
+- [x] Bacula Director                   eftechcombr/bacula:15.0.2-director
+- [x] Bacula Storage Daemon             eftechcombr/bacula:15.0.2-storage
+- [x] Bacula File Daemon                eftechcombr/bacula:15.0.2-client
 - [x] Baculum Web Gui                   eftechcombr/baculum:11.0.6-web
 - [x] Baculum API                       eftechcombr/baculum:11.0.6-api
 - [x] Postfix SMTP Relay                eftechcombr/postfix:latest
@@ -55,7 +53,7 @@ docker-compose.yaml
     version: '3.1'
     services:
       db:
-        image: eftechcombr/bacula:13.0.3-catalog
+        image: eftechcombr/bacula:15.0.2-catalog
         restart: unless-stopped
         environment:
           POSTGRES_PASSWORD: bacula
@@ -66,7 +64,7 @@ docker-compose.yaml
         ports:
           - 5432
       bacula-dir:
-        image: eftechcombr/bacula:13.0.3-director
+        image: eftechcombr/bacula:15.0.2-director
         restart: unless-stopped
         volumes:
           - ./etc/bacula-dir.conf:/opt/bacula/etc/bacula-dir.conf:ro
@@ -76,7 +74,7 @@ docker-compose.yaml
         ports:
           - 9101
       bacula-sd:
-        image: eftechcombr/bacula:13.0.3-storage
+        image: eftechcombr/bacula:15.0.2-storage
         restart: unless-stopped
         depends_on:
           - bacula-dir
@@ -86,7 +84,7 @@ docker-compose.yaml
         ports:
           - 9103
       bacula-fd:
-        image: eftechcombr/bacula:13.0.3-client
+        image: eftechcombr/bacula:15.0.2-client
         restart: unless-stopped
         depends_on:
           - bacula-sd

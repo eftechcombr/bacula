@@ -1,4 +1,6 @@
-FROM eftechcombr/bacula:13.0.3-base
+FROM eftechcombr/bacula:15.0.2-base
+
+RUN apt-get -y install bacula-common bacula-client
 
 VOLUME ["/opt/bacula/etc"]
 
