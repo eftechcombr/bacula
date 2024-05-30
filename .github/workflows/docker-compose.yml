@@ -1,0 +1,129 @@
+name: Docker Compose Build
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-base:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Compose
+        run: |
+            sudo apt-get update
+            sudo apt-get install -y docker-compose
+            docker-compose --version
+
+      - name: Build base
+        run: |
+            # if [ ! -f .env ]; then 
+            #  cp .env.example .env
+            # fi
+            cd docker/ 
+            docker-compose -f docker-compose-with-build.yml build base
+
+  build-catalog:
+
+    needs: build-base
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Compose
+        run: |
+            sudo apt-get update
+            sudo apt-get install -y docker-compose
+            docker-compose --version
+
+      - name: Build base
+        run: |
+            # if [ ! -f .env ]; then 
+            #  cp .env.example .env
+            # fi
+            cd docker/ 
+            docker-compose -f docker-compose-with-build.yml build db
+
+
+  build-director:
+
+    needs: build-base
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Compose
+        run: |
+            sudo apt-get update
+            sudo apt-get install -y docker-compose
+            docker-compose --version
+
+      - name: Build base
+        run: |
+            # if [ ! -f .env ]; then 
+            #  cp .env.example .env
+            # fi
+            cd docker/ 
+            docker-compose -f docker-compose-with-build.yml build bacula-dir
+
+
+  build-storage:
+
+    needs: build-base
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Compose
+        run: |
+            sudo apt-get update
+            sudo apt-get install -y docker-compose
+            docker-compose --version
+
+      - name: Build base
+        run: |
+            # if [ ! -f .env ]; then 
+            #  cp .env.example .env
+            # fi
+            cd docker/ 
+            docker-compose -f docker-compose-with-build.yml build bacula-sd
+
+
+  build-client:
+
+    needs: build-base
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Compose
+        run: |
+            sudo apt-get update
+            sudo apt-get install -y docker-compose
+            docker-compose --version
+
+      - name: Build base
+        run: |
+            # if [ ! -f .env ]; then 
+            #  cp .env.example .env
+            # fi
+            cd docker/ 
+            docker-compose -f docker-compose-with-build.yml build bacula-fd
+
