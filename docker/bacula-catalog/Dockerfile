@@ -1,6 +1,8 @@
-FROM eftechcombr/bacula:13.0.3-base AS base
+FROM eftechcombr/bacula:15.0.2-base AS base
 
-FROM postgres:13.7
+RUN apt-get -y install bacula-postgresql
+
+FROM postgres:15
 
 ENV POSTGRES_PASSWORD bacula
 

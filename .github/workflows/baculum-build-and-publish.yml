@@ -21,7 +21,7 @@ env:
   REGISTRY: "docker.io"
   # github.repository as <account>/<repo>
   IMAGE_NAME: eftechcombr/baculum
-  VERSION: "11.0.6"
+  VERSION: "15.0.6"
 
 
 

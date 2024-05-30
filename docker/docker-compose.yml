@@ -1,9 +1,7 @@
-version: '3.1'
-#
 services:
 
   db:
-    image: eftechcombr/bacula:13.0.3-catalog
+    image: eftechcombr/bacula:15.0.2-catalog
     restart: unless-stopped
     environment:
       POSTGRES_PASSWORD: bacula
@@ -15,7 +13,7 @@ services:
       - 5432:5432
 #
   bacula-dir:
-    image: eftechcombr/bacula:13.0.3-director
+    image: eftechcombr/bacula:15.0.2-director
     restart: unless-stopped
     volumes:
       - ./etc:/opt/bacula/etc:ro
@@ -25,7 +23,7 @@ services:
       - 9101:9101
 #
   bacula-sd:
-    image: eftechcombr/bacula:13.0.3-storage
+    image: eftechcombr/bacula:15.0.2-storage
     restart: unless-stopped
     depends_on:
       - bacula-dir
@@ -36,7 +34,7 @@ services:
       - 9103:9103
 #
   bacula-fd:
-    image: eftechcombr/bacula:13.0.3-client
+    image: eftechcombr/bacula:15.0.2-client
     restart: unless-stopped
     depends_on:
       - bacula-sd
