@@ -80,7 +80,7 @@ jobs:
     env: 
       CONTEXT: ./docker/bacula-catalog
       SUFFIX: catalog
-      PLATFORMS: linux/amd64
+      PLATFORMS: linux/amd64,linux/arm64
 
     runs-on: ubuntu-latest
     permissions:
@@ -139,7 +139,7 @@ jobs:
     env: 
       CONTEXT: ./docker/bacula-dir
       SUFFIX: director
-      PLATFORMS: linux/amd64
+      PLATFORMS: linux/amd64,linux/arm64
 
     runs-on: ubuntu-latest
     permissions:
@@ -198,7 +198,7 @@ jobs:
     env: 
       CONTEXT: ./docker/bacula-sd
       SUFFIX: storage
-      PLATFORMS: linux/amd64
+      PLATFORMS: linux/amd64,linux/arm64
 
     runs-on: ubuntu-latest
     permissions:
@@ -259,7 +259,7 @@ jobs:
     env: 
       CONTEXT: ./docker/bacula-fd
       SUFFIX: client
-      PLATFORMS: linux/amd64
+      PLATFORMS: linux/amd64,linux/arm64
 
     runs-on: ubuntu-latest
     permissions:
