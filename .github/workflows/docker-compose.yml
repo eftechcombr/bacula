@@ -127,3 +127,59 @@ jobs:
             cd docker/ 
             docker-compose -f docker-compose-with-build.yml build bacula-fd
 
+
+
+  build-baculum-api:
+
+    needs: 
+      - build-base
+      - build-director
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Compose
+        run: |
+            sudo apt-get update
+            sudo apt-get install -y docker-compose
+            docker-compose --version
+
+      - name: Build base
+        run: |
+            # if [ ! -f .env ]; then 
+            #  cp .env.example .env
+            # fi
+            cd docker/ 
+            docker-compose -f docker-compose-with-build.yml build baculum-api
+
+
+
+  build-baculum-web:
+
+    needs: 
+      - build-base
+      - build-director
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Compose
+        run: |
+            sudo apt-get update
+            sudo apt-get install -y docker-compose
+            docker-compose --version
+
+      - name: Build base
+        run: |
+            # if [ ! -f .env ]; then 
+            #  cp .env.example .env
+            # fi
+            cd docker/ 
+            docker-compose -f docker-compose-with-build.yml build baculum-web
+
