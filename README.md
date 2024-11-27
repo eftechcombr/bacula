@@ -1,5 +1,7 @@
 # Bacula 15.0.2 Container
 
+[![Build Baculum](https://github.com/eftechcombr/bacula/actions/workflows/baculum-build-and-publish.yml/badge.svg)](https://github.com/eftechcombr/bacula/actions/workflows/baculum-build-and-publish.yml)
+
 Deploy the bacula community edition on Docker Containers. 
 
 ## Images
