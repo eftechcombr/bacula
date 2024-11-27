@@ -8,10 +8,8 @@ Deploy the bacula community edition on Docker Containers.
 - [x] Bacula Director                   eftechcombr/bacula:15.0.2-director
 - [x] Bacula Storage Daemon             eftechcombr/bacula:15.0.2-storage
 - [x] Bacula File Daemon                eftechcombr/bacula:15.0.2-client
-- [x] Baculum Web Gui                   eftechcombr/baculum:11.0.6-web
-- [x] Baculum API                       eftechcombr/baculum:11.0.6-api
-- [x] Postfix SMTP Relay                eftechcombr/postfix:latest
-- [x] SMTP2TG SMTP Relay to Telegram    b3vis/docker-smtp2tg
+- [x] Baculum Web Gui                   eftechcombr/baculum:15.0.2-web
+- [x] Baculum API                       eftechcombr/baculum:15.0.2-api
 
 ## Install Docker 
 
