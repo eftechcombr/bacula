@@ -97,7 +97,7 @@ services:
 #
   baculum-api:
     build: baculum-api/
-    image: eftechcombr/baculum:11.0.6-api
+    image: eftechcombr/baculum:15.0.2-api
     restart: unless-stopped
     depends_on: 
       - db
@@ -110,7 +110,7 @@ services:
 #
   baculum-web:
     build: baculum-web/
-    image: eftechcombr/baculum:11.0.6-web
+    image: eftechcombr/baculum:15.0.2-web
     restart: unless-stopped
     depends_on: 
       - baculum-api
