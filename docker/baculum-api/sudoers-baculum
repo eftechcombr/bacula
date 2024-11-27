@@ -1,4 +1,4 @@
-Defaults:apache "'!'"requiretty
+Defaults:www-data "'!'"requiretty
 www-data ALL=NOPASSWD: /usr/sbin/bconsole
 www-data ALL=NOPASSWD: /usr/sbin/bdirjson
 www-data ALL=NOPASSWD: /usr/sbin/bsdjson
